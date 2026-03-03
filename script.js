@@ -184,6 +184,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 resWorkplace.textContent = foundRecord['Working Place'] || 'N/A';
                 resSerial.textContent = foundRecord['Serial No'] || 'N/A';
                 resPrintDate.textContent = foundRecord['Date of Printing'] || 'N/A';
+
+                // Populate print document fields
+                const now = new Date();
+                const refDate = now.toISOString().replace('T', ' ').substring(0, 19);
+                const refSerial = (foundRecord['Serial No'] || certNumber).replace(/\s/g, '');
+                document.getElementById('print-reference').textContent =
+                    `${refDate.replace(/-/g, '').replace(/:/g, '').replace(' ', '-')}-${refSerial}`;
+                document.getElementById('print-name').textContent = foundRecord['Name with initial'] || 'N/A';
+                document.getElementById('print-programme').textContent = foundRecord['Programme Name'] || 'N/A';
+                document.getElementById('print-award-date').textContent = foundRecord['Date'] || 'N/A';
+                document.getElementById('print-cert-no').textContent = foundRecord['Certificate No'] || 'N/A';
+                document.getElementById('print-serial').textContent = foundRecord['Serial No'] || 'N/A';
+                document.getElementById('print-workplace').textContent = foundRecord['Working Place'] || 'N/A';
+                document.getElementById('print-generated-date').textContent =
+                    now.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' }) +
+                    ' ' + now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
                 showResult();
             } else {
                 throw new Error('not_found_in_sheet');
@@ -230,4 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hideResult = () => resultSection.classList.add('hidden');
 });
 
-
+// ---- Print / Download as PDF ----
+function printVerificationDoc() {
+    window.print();
+}

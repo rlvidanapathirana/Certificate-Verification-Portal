@@ -665,3 +665,258 @@ body {
         padding: 0.5rem 0.75rem;
     }
 }
+
+/* =============================================
+   PRINT BUTTON (screen only)
+   ============================================= */
+.print-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem;
+}
+
+.print-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: linear-gradient(135deg, #1e40af, #1d4ed8);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 0.8rem 1.8rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(29, 78, 216, 0.35);
+}
+
+.print-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(29, 78, 216, 0.45);
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
+}
+
+.print-btn:active {
+    transform: translateY(0);
+}
+
+/* =============================================
+   PRINT DOCUMENT (hidden on screen)
+   ============================================= */
+.print-document {
+    display: none;
+    /* shown only via @media print */
+}
+
+/* =============================================
+   @MEDIA PRINT  – A4 clean PDF output
+   ============================================= */
+@media print {
+
+    /* Hide everything on screen */
+    .background-container,
+    .header,
+    .search-section,
+    .result-section,
+    .footer,
+    .glow-orb {
+        display: none !important;
+    }
+
+    /* Reset body / page */
+    body {
+        background: #fff !important;
+        color: #111 !important;
+        min-height: unset;
+        display: block;
+    }
+
+    .app-container {
+        display: block;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    /* Show the print document */
+    .print-document {
+        display: block !important;
+        background: #fff;
+        color: #111;
+        font-family: 'Georgia', 'Times New Roman', serif;
+        font-size: 11pt;
+        line-height: 1.6;
+        padding: 30mm 25mm 25mm 25mm;
+        width: 100%;
+        box-sizing: border-box;
+        page-break-inside: avoid;
+    }
+
+    /* Letterhead */
+    .print-letterhead {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        border-bottom: 2.5px solid #1a3c6e;
+        padding-bottom: 10pt;
+        margin-bottom: 14pt;
+    }
+
+    .print-logo-area {
+        display: flex;
+        align-items: center;
+        gap: 10pt;
+    }
+
+    .print-shield {
+        flex-shrink: 0;
+    }
+
+    .print-org-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .print-org-name {
+        font-size: 13pt;
+        font-weight: bold;
+        color: #1a3c6e;
+        font-family: 'Georgia', serif;
+        letter-spacing: 0.02em;
+    }
+
+    .print-org-sub {
+        font-size: 9pt;
+        color: #555;
+        margin-top: 2pt;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .print-ref-block {
+        text-align: right;
+        font-size: 8.5pt;
+        color: #444;
+        line-height: 1.8;
+    }
+
+    .print-ref-label {
+        font-weight: bold;
+        color: #1a3c6e;
+    }
+
+    /* Title bar */
+    .print-title-bar {
+        background: #1a3c6e;
+        color: #fff;
+        text-align: center;
+        padding: 7pt 0;
+        margin-bottom: 18pt;
+        border-radius: 2pt;
+    }
+
+    .print-doc-title {
+        font-size: 14pt;
+        font-family: 'Georgia', serif;
+        letter-spacing: 0.12em;
+        margin: 0;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    /* Salutation */
+    .print-salutation {
+        font-size: 10.5pt;
+        margin-bottom: 10pt;
+        font-style: italic;
+        color: #333;
+    }
+
+    /* Body text */
+    .print-body-text {
+        font-size: 10.5pt;
+        margin-bottom: 16pt;
+        color: #222;
+    }
+
+    /* Record details box */
+    .print-details-box {
+        border: 1.2px solid #1a3c6e;
+        border-radius: 3pt;
+        padding: 10pt 14pt;
+        margin-bottom: 16pt;
+        background: #f5f8ff;
+    }
+
+    .print-details-title {
+        font-weight: bold;
+        font-size: 10pt;
+        color: #1a3c6e;
+        margin-bottom: 7pt;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+    }
+
+    .print-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 10pt;
+    }
+
+    .print-table tr {
+        border-bottom: 0.5px solid #d0d8e8;
+    }
+
+    .print-table tr:last-child {
+        border-bottom: none;
+    }
+
+    .print-td-label {
+        color: #444;
+        font-weight: 600;
+        width: 38%;
+        padding: 4pt 0;
+        vertical-align: top;
+    }
+
+    .print-td-sep {
+        color: #777;
+        width: 4%;
+        padding: 4pt 4pt;
+        vertical-align: top;
+    }
+
+    /* Disclaimer */
+    .print-disclaimer {
+        font-size: 8.5pt;
+        color: #555;
+        background: #f9f9f9;
+        border-left: 3px solid #1a3c6e;
+        padding: 7pt 10pt;
+        margin-top: 18pt;
+        margin-bottom: 18pt;
+        border-radius: 0 3pt 3pt 0;
+    }
+
+    /* Footer line */
+    .print-footer-line {
+        display: flex;
+        justify-content: space-between;
+        font-size: 8pt;
+        color: #777;
+        border-top: 1px solid #ccc;
+        padding-top: 7pt;
+    }
+
+    .print-footer-right {
+        text-align: right;
+        font-style: italic;
+    }
+
+    /* Ensure page margins are respected */
+    @page {
+        size: A4;
+        margin: 15mm;
+    }
+}
