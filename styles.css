@@ -919,4 +919,62 @@ body {
         size: A4;
         margin: 15mm;
     }
+
+    @media print {
+
+        /* ප්‍රධාන පේළි සැකසුම */
+        .print-org-info {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        /* ආයතනයේ නම තනි පේළියකට ගැනීම */
+        .print-org-name {
+            font-size: 15pt;
+            /* අකුරු පේළියට ගැළපෙන සේ ප්‍රමාණය සකසා ඇත */
+            font-weight: bold;
+            color: #1a3c6e;
+            white-space: nowrap;
+            /* අකුරු පේළිය කැඩීම වළක්වයි */
+            margin-bottom: 2pt;
+        }
+
+        /* දෙවන පේළිය - Authority සහ Reference දෙපසට සැකසීම */
+        .print-org-sub-row {
+            display: flex;
+            flex-wrap: wrap;
+            /* අකුරු වැඩි වූ විට ඊළඟ පේළියට යාමට ඉඩ දෙයි */
+            justify-content: space-between;
+            align-items: baseline;
+            width: 100%;
+            margin-top: 2pt;
+        }
+
+        .print-org-sub {
+            font-size: 9pt;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .print-ref-block {
+            font-size: 9pt;
+            color: #444;
+            /* පේළිය කැඩුණු පසු දකුණු පසටම තල්ලු කිරීම සඳහා */
+            margin-left: auto;
+            text-align: right;
+            flex-basis: 100%;
+            /* මෙය භාවිතයෙන් මුළු පේළියම ගෙන Reference කොටස පහළටම දමයි */
+            margin-top: 2pt;
+            /* පේළි දෙක අතර සුළු පරතරයක් සඳහා */
+        }
+
+        /* ලෝගෝවේ උස පාලනය */
+        .print-logo-img {
+            height: 55px;
+            width: auto;
+            margin-right: 12pt;
+        }
+    }
 }
